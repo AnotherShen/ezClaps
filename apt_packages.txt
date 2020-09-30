@@ -1,0 +1,53 @@
+#Volatility Requirements
+dwarfdump
+build-essential
+yara
+zip
+
+#NFDump Requirements
+libtool
+m4
+automake
+flex
+bison
+libpcap-dev
+libbz2-dev
+
+#CyberChef Requirements
+nodejs
+npm
+
+#Utilities
+vim
+curl
+git
+ngrep
+p7zip-full
+
+#Python
+python3
+python3-pip
+python2
+python-dev
+
+#Host Forensics
+libvshadow-utils
+ewf-tools
+sleuthkit
+autopsy
+
+#Network Forensics
+wireshark
+tshark
+tcpdump
+tcpflow
+tcpxtract
+
+#Metadata
+exiftool
+
+#Credentials
+john
+
+#Reversing
+radare2
