@@ -5,6 +5,9 @@ if [[ $EUID = 0 ]]; then
         exit 1
 fi
 
+#Set timezone to UTC
+sudo timedatectl set-timezone UTC
+
 #Update background and terminal if GNOME
 XDG=$(echo $XDG_CURRENT_DESKTOP)
 if [[ $XDG == *"GNOME"* ]]; then
