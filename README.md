@@ -8,6 +8,7 @@ Ubuntu 20.04 Package Installer for Incident Response
 cd /tmp
 wget https://codeload.github.com/0xShen/ezClaps/zip/master
 unzip master
+cd ezClaps-master
 chmod +x setup.sh
 ./setup.sh
 ```
@@ -66,6 +67,7 @@ radare2
 ```
 
 ## To-Do
+1. Add the following packages
 ```
 ghidra
 burpsuite
@@ -73,3 +75,4 @@ vol3
 rekall
 networkminer
 ```
+2. Automate the apt mirror country selector (default: AU)
