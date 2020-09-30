@@ -71,6 +71,8 @@ radare2
 ## To-Do
 1. Add the following packages
 ```
+bro
+zeek
 ghex
 oletools
 pestudio
