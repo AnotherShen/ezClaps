@@ -85,6 +85,11 @@ burpsuite
 vol3
 rekall
 networkminer
+analyzeMFT (pip2)
+scdbg
 ```
 2. Automate the apt mirror country selector (default: AU)
-3. Modularise builds and run them concurrently
+3. Modularise compile steps and run them concurrently
+4. Sidebar icons for GUI tools (CyberChef, Autopsy, Burp, etc)
+5. Optimize APT install process so that all packages are submitted at once
+6. Move remaining languages (Python3) outside of APT loop
