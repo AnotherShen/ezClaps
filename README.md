@@ -1,6 +1,8 @@
 # ezClaps
 Ubuntu 20.04 Package Installer for Incident Response
 
+![Preview](https://i.imgur.com/GD39b4X.png)
+
 ## Installation
 1. Install [Ubuntu 20.04](https://releases.ubuntu.com/)
 2. Run the following commands in Terminal
