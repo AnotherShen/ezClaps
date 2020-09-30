@@ -5,6 +5,7 @@ yara
 zip
 
 #NFDump Requirements
+pkg-config
 libtool
 m4
 automake
