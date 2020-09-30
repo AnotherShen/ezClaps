@@ -14,11 +14,14 @@ chmod +x setup.sh
 
 ## Packages Included
 ### Languages
+```
 python2 & pip
 python3 & pip3
 nodejs & npm
+```
 
 ### Utilities
+```
 vim
 curl
 git
@@ -26,34 +29,47 @@ git
 dwarfdump
 cyberchef
 ngrep
+```
 
 ### Host Analysis
+```
 vol.py
 yara
 libvshadow-utils
 ewf-tools
 sleuthkit
 autopsy
+```
 
 ### Network Forensics
+```
 wireshark
 tshark
 tcpdump
 tcpflow
 tcpxtract
+```
 
 ### Metadata
+```
 exiftool
+```
 
 ### Credentials
+```
 john
+```
 
 ### Reversing
+```
 radare2
+```
 
 ## To-Do
-1. ghidra
-2. burpsuite
-3. vol3
-4. rekall
-5. networkminer
+```
+ghidra
+burpsuite
+vol3
+rekall
+networkminer
+```
