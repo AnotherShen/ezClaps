@@ -40,6 +40,10 @@ sudo mv sources.list /etc/apt/
 sudo apt update
 sudo apt upgrade -y
 
+#Update NodeJS to latest version (Ubuntu 18.04 Compatability for CyberChef)
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
 #Install APT packages
 while read line; do
         if [[ ${line:0:1} != \# && $line != "" ]]; then
@@ -70,11 +74,7 @@ make
 sudo make install
 sudo ldconfig
 
-#Update NodeJS to latest version (Ubuntu 18.04 Compatability)
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
-#Install Cyber Chef
+#Install CyberChef
 echo 'export NODE_OPTIONS=--max_old_space_size=2048' >> ~/.bashrc
 cd /tmp
 sudo npm install -g grunt-cli
@@ -87,6 +87,53 @@ sudo mv /tmp/CyberChef/build/prod/* /opt/cyberchef
 echo 'alias cyberchef="firefox /opt/cyberchef/index.html &"' >> ~/.bashrc
 source ~/.bashrc
 ln -s /opt/cyberchef/index.html ~/Desktop/CyberChef
+
+#Autopsy - Install Photorec Support
+sudo apt-get install testdisk
+
+#Autopsy - Install HEIC/HEIF Support
+sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get install -y build-essential autoconf libtool git-core
+sudo apt-get build-dep -y imagemagick libmagickcore-dev libde265 libheif
+cd /usr/src/
+sudo git clone https://github.com/strukturag/libde265.git
+sudo git clone https://github.com/strukturag/libheif.git
+cd libde265/
+sudo ./autogen.sh
+sudo ./configure
+sudo make
+sudo make install
+cd /usr/src/libheif/
+sudo ./autogen.sh
+sudo ./configure
+sudo make
+sudo make install
+cd /usr/src/
+sudo wget https://www.imagemagick.org/download/ImageMagick.tar.gz
+sudo tar xf ImageMagick.tar.gz
+cd ImageMagick-7*
+sudo ./configure --with-heic=yes
+sudo make
+sudo make install
+sudo ldconfig
+
+#Autopsy - Install BellSoft Java 8 & JavaFX 8
+cd /tmp
+wget https://download.bell-sw.com/java/8u265+1/bellsoft-jdk8u265+1-linux-amd64-full.deb
+sudo apt install -y ./bellsoft-jdk8u265+1-linux-amd64-full.deb
+export JAVA_HOME=/usr/lib/jvm/bellsoft-java8-full-amd64
+java -version
+
+#Autopsy - Install Sleuthkit
+cd /tmp
+wget https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.10.0/sleuthkit-java_4.10.0-1_amd64.deb
+sudo apt install -y ./sleuthkit-java_4.8.0-1_amd64.deb
+
+#Autopsy - Install Autopsy
+wget https://github.com/sleuthkit/autopsy/releases/download/autopsy-4.16.0/autopsy-4.16.0.zip
+unzip autopsy-4.16.0.zip
+sh unix_setup.sh
 
 #Update favourites
 if [[ $XDG == *"GNOME"* ]]; then
