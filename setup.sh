@@ -131,7 +131,8 @@ sudo ldconfig
 cd /tmp
 wget http://download.bell-sw.com/java/8u265+1/bellsoft-jdk8u265+1-linux-amd64-full.deb
 sudo apt install -y ./bellsoft-jdk8u265+1-linux-amd64-full.deb
-export JAVA_HOME=/usr/lib/jvm/bellsoft-java8-full-amd64
+echo 'export JAVA_HOME=/usr/lib/jvm/bellsoft-java8-full-amd64' >> ~/.bashrc
+source ~/.bashrc
 java -version
 
 #Autopsy - Install Sleuthkit
