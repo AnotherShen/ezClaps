@@ -70,6 +70,10 @@ make
 sudo make install
 sudo ldconfig
 
+#Update NodeJS to latest version (Ubuntu 18.04 Compatability)
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
 #Install Cyber Chef
 echo 'export NODE_OPTIONS=--max_old_space_size=2048' >> ~/.bashrc
 cd /tmp
