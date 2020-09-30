@@ -14,10 +14,6 @@ bison
 libpcap-dev
 libbz2-dev
 
-#CyberChef Requirements
-nodejs
-npm
-
 #Utilities
 vim
 curl
