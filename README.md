@@ -83,3 +83,4 @@ rekall
 networkminer
 ```
 2. Automate the apt mirror country selector (default: AU)
+3. Non-web Autopsy
