@@ -88,13 +88,6 @@ echo 'alias cyberchef="firefox /opt/cyberchef/index.html &"' >> ~/.bashrc
 source ~/.bashrc
 ln -s /opt/cyberchef/index.html ~/Desktop/CyberChef
 
-#To-do
-#burpsuite
-#ghidra
-#networkminer
-#rekall
-#vol3
-
 #Update favourites
 if [[ $XDG == *"GNOME"* ]]; then
         gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'wireshark.desktop']"
