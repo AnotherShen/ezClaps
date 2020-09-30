@@ -71,6 +71,9 @@ radare2
 ## To-Do
 1. Add the following packages
 ```
+ghex
+oletools
+pestudio
 ghidra
 burpsuite
 vol3
