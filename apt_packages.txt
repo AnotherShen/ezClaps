@@ -35,7 +35,6 @@ python-dev
 libvshadow-utils
 ewf-tools
 sleuthkit
-autopsy
 
 #Network Forensics
 wireshark
