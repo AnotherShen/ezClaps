@@ -88,8 +88,17 @@ echo 'alias cyberchef="firefox /opt/cyberchef/index.html &"' >> ~/.bashrc
 source ~/.bashrc
 ln -s /opt/cyberchef/index.html ~/Desktop/CyberChef
 
+#Install SleuthKit (can't use apt due to autopsy)
+cd /tmp
+git clone https://github.com/sleuthkit/sleuthkit.git
+cd sleuthkit
+./bootstrap
+./configure
+sudo make
+sudo make install
+
 #Autopsy - Install Photorec Support
-sudo apt-get install testdisk
+sudo apt-get -y install testdisk
 
 #Autopsy - Install HEIC/HEIF Support
 sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
@@ -120,7 +129,7 @@ sudo ldconfig
 
 #Autopsy - Install BellSoft Java 8 & JavaFX 8
 cd /tmp
-wget https://download.bell-sw.com/java/8u265+1/bellsoft-jdk8u265+1-linux-amd64-full.deb
+wget http://download.bell-sw.com/java/8u265+1/bellsoft-jdk8u265+1-linux-amd64-full.deb
 sudo apt install -y ./bellsoft-jdk8u265+1-linux-amd64-full.deb
 export JAVA_HOME=/usr/lib/jvm/bellsoft-java8-full-amd64
 java -version
@@ -128,12 +137,16 @@ java -version
 #Autopsy - Install Sleuthkit
 cd /tmp
 wget https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.10.0/sleuthkit-java_4.10.0-1_amd64.deb
-sudo apt install -y ./sleuthkit-java_4.8.0-1_amd64.deb
+sudo apt install -y ./sleuthkit-java_4.10.0-1_amd64.deb
 
 #Autopsy - Install Autopsy
+cd /tmp
 wget https://github.com/sleuthkit/autopsy/releases/download/autopsy-4.16.0/autopsy-4.16.0.zip
 unzip autopsy-4.16.0.zip
+cd autopsy-4.16.0
 sh unix_setup.sh
+echo 'alias autopsy="./bin/autopsy &"' >> ~/.bashrc
+source ~/.bashrc
 
 #Update favourites
 if [[ $XDG == *"GNOME"* ]]; then
