@@ -40,10 +40,6 @@ sudo mv sources.list /etc/apt/
 sudo apt update
 sudo apt upgrade -y
 
-#Update NodeJS to latest version (Ubuntu 18.04 Compatability for CyberChef)
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
 #Install APT packages
 while read line; do
         if [[ ${line:0:1} != \# && $line != "" ]]; then
@@ -74,7 +70,11 @@ make
 sudo make install
 sudo ldconfig
 
-#Install CyberChef
+#CyberChef - Install NodeJS and NPM
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt install -y nodejs
+
+#CyberChef - Install CyberChef
 echo 'export NODE_OPTIONS=--max_old_space_size=2048' >> ~/.bashrc
 cd /tmp
 sudo npm install -g grunt-cli
