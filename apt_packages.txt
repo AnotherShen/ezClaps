@@ -34,7 +34,6 @@ python-dev
 #Host Forensics
 libvshadow-utils
 ewf-tools
-sleuthkit
 
 #Network Forensics
 wireshark
