@@ -1,7 +1,11 @@
 # ezClaps
-Ubuntu 20.04 Package Installer for Incident Response
+Ubuntu 20.04 (18.04 compatible) package installer for incident response.
 
 ![Preview](https://i.imgur.com/GD39b4X.png)
+
+## Verified Ubuntu Versions
+1. Ubuntu 20.04
+2. Ubuntu 18.04
 
 ## Installation
 1. Install [Ubuntu 20.04](https://releases.ubuntu.com/)
