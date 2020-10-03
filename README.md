@@ -1,5 +1,5 @@
 # ezClaps
-Ubuntu 20.04 (18.04 compatible) package installer for incident response.
+Ubuntu 18.04 & 20.04 package installer for incident response.
 
 ![Preview](https://i.imgur.com/GD39b4X.png)
 
@@ -75,7 +75,6 @@ radare2
 ## To-Do
 1. Add the following packages
 ```
-bro
 zeek
 ghex
 oletools
@@ -87,9 +86,12 @@ rekall
 networkminer
 analyzeMFT (pip2)
 scdbg
+plaso/log2timeline
+vscode
+regripper
+constellation
+splunk forwarding agent
 ```
-2. Automate the apt mirror country selector (default: AU)
-3. Modularise compile steps and run them concurrently
-4. Sidebar icons for GUI tools (CyberChef, Autopsy, Burp, etc)
-5. Optimize APT install process so that all packages are submitted at once
-6. Move remaining languages (Python3) outside of APT loop
+2. Asyncronsis compiling of build modules
+3. Sidebar icons for GUI tools (CyberChef, Autopsy, Burp, etc)
+4. Python VENVs (volatility, plaso, vscode, regripper)
