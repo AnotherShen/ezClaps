@@ -13,67 +13,67 @@ BLU='\033[0;36m'
 NC='\033[0m'
 
 #Run the theme if applicable
-printf "\n${BLU}ezClaps${NC} - ${AMB}Updating theme...${NC}\n\n"
+echo -e "\n${BLU}ezClaps${NC} - ${AMB}Updating theme...${NC}\n"
 VER=$(lsb_release -r | awk '{print $2}')
 if [[ -d "modules/themes/$VER" ]]; then
-        sh modules/themes/$VER/install.sh
-        printf "\n${BLU}ezClaps${NC} - ${GRN}Theme updated!${NC}\n\n"
+        bash modules/themes/$VER/install.sh
+        echo -e "\n${BLU}ezClaps${NC} - ${GRN}Theme updated!${NC}\n"
 else
-        printf "\n${BLU}ezClaps${NC} - ${RED}No theme available!${NC}\n\n"
+        echo -e "\n${BLU}ezClaps${NC} - ${RED}No theme available!${NC}\n"
 fi
 
 #Set timezone to UTC
-printf "\n${BLU}ezClaps${NC} - ${AMB}Updating timezone...${NC}\n\n"
+echo -e "\n${BLU}ezClaps${NC} - ${AMB}Updating timezone...${NC}\n"
 sudo timedatectl set-timezone UTC
-printf "\n${BLU}ezClaps${NC} - ${GRN}Timezone updated to UTC!${NC}\n\n"
+echo -e "\n${BLU}ezClaps${NC} - ${GRN}Timezone updated to UTC!${NC}\n"
 
 #Install Python3 & PIP3
-printf "\n${BLU}ezClaps${NC} - ${AMB}Installing Python3 & PIP3...${NC}\n\n"
+echo -e "\n${BLU}ezClaps${NC} - ${AMB}Installing Python3 & PIP3...${NC}\n"
 sudo apt update
 sudo apt install python3 python3-pip -y
-printf "\n${BLU}ezClaps${NC} - ${GRN}Python3 & PIP3 installed!${NC}\n\n"
+echo -e "\n${BLU}ezClaps${NC} - ${GRN}Python3 & PIP3 installed!${NC}\n"
 
 #Install apt-select and then set mirror
-printf "\n${BLU}ezClaps${NC} - ${AMB}Updating APT mirror...${NC}\n\n"
+echo -e "\n${BLU}ezClaps${NC} - ${AMB}Updating APT mirror...${NC}\n"
 sudo pip3 install apt-select
 apt-select -C AU
 sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup
 sudo mv sources.list /etc/apt/
-printf "\n${BLU}ezClaps${NC} - ${GRN}APT mirror updated!${NC}\n\n"
+echo -e "\n${BLU}ezClaps${NC} - ${GRN}APT mirror updated!${NC}\n"
 
 #Update to pacakge list for new mirror and upgrade system
-printf "\n${BLU}ezClaps${NC} - ${AMB}Upgrading system...${NC}\n\n"
+echo -e "\n${BLU}ezClaps${NC} - ${AMB}Upgrading system...${NC}\n"
 sudo apt update
 sudo apt upgrade -y
-printf "\n${BLU}ezClaps${NC} - ${GRN}System upgraded!${NC}\n\n"
+echo -e "\n${BLU}ezClaps${NC} - ${GRN}System upgraded!${NC}\n"
 
 #Install Python2 & PIP2
-printf "\n${BLU}ezClaps${NC} - ${AMB}Installing Python2 & PIP2...${NC}\n\n"
+echo -e "\n${BLU}ezClaps${NC} - ${AMB}Installing Python2 & PIP2...${NC}\n"
 sudo apt install python2 python-dev -y
 cd /tmp
 curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py
 sudo python2 get-pip.py
-printf "\n${BLU}ezClaps${NC} - ${GRN}Python2 & PIP2 installed!${NC}\n\n"
+echo -e "\n${BLU}ezClaps${NC} - ${GRN}Python2 & PIP2 installed!${NC}\n"
 
 #Install NodeJS & NPM
-printf "\n${BLU}ezClaps${NC} - ${AMB}Installing NodeJS & NPM...${NC}\n\n"
+echo -e "\n${BLU}ezClaps${NC} - ${AMB}Installing NodeJS & NPM...${NC}\n"
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt install -y nodejs
-printf "\n${BLU}ezClaps${NC} - ${GRN}NodeJS & NPM installed!${NC}\n\n"
+echo -e "\n${BLU}ezClaps${NC} - ${GRN}NodeJS & NPM installed!${NC}\n"
 
 #Install APT packages
-printf "\n${BLU}ezClaps${NC} - ${AMB}Installing APT packages...${NC}\n\n"
+echo -e "\n${BLU}ezClaps${NC} - ${AMB}Installing APT packages...${NC}\n"
 while read line; do
         if [[ ${line:0:1} != \# && $line != "" ]]; then
                 sudo DEBIAN_FRONTEND=noninteractive apt -y install $line
         fi
 done < apt_packages.txt
-printf "\n${BLU}ezClaps${NC} - ${GRN}APT packages installed!${NC}\n\n"
+echo -e "\n${BLU}ezClaps${NC} - ${GRN}APT packages installed!${NC}\n"
 
 #Run all build scripts
-printf "\n${BLU}ezClaps${NC} - ${AMB}Running build scripts...${NC}\n\n"
-find modules/build -iname 'install.sh' -exec sh "{}" \;
-printf "\n${BLU}ezClaps${NC} - ${GRN}All build scripts run!${NC}\n\n"
+echo -e "\n${BLU}ezClaps${NC} - ${AMB}Running build scripts...${NC}\n"
+find modules/build -iname 'install.sh' -exec bash "{}" \;
+echo -e "\n${BLU}ezClaps${NC} - ${GRN}All build scripts run!${NC}\n"
 
 #Final message
-printf "\n${BLU}ezClaps${NC} - ${GRN}Setup Complete!${NC}\n\n"
+echo -e "\n${BLU}ezClaps${NC} - ${GRN}Setup Complete!${NC}\n"
