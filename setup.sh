@@ -35,7 +35,7 @@ echo -e "${BLU}ezClaps${NC} - ${GRN}Python3 & PIP3 installed!${NC}"
 
 #Install apt-select and then set mirror
 echo -e "${BLU}ezClaps${NC} - ${AMB}Updating APT mirror...${NC}"
-sudo pip3 install apt-select
+sudo -H pip3 install apt-select
 apt-select -C AU
 sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup
 sudo mv sources.list /etc/apt/
@@ -60,10 +60,9 @@ echo -e "${BLU}ezClaps${NC} - ${GRN}APT packages installed!${NC}"
 
 #Install Python2 & PIP2
 echo -e "${BLU}ezClaps${NC} - ${AMB}Installing Python2 & PIP2...${NC}"
-sudo apt install python2 python-dev -y
-cd /tmp
-curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py
-sudo python2 get-pip.py
+sudo apt install python python-dev -y
+curl https://bootstrap.pypa.io/get-pip.py --output /tmp/get-pip.py
+sudo python2 /tmp/get-pip.py
 echo -e "${BLU}ezClaps${NC} - ${GRN}Python2 & PIP2 installed!${NC}"
 
 #Install NodeJS & NPM
@@ -74,7 +73,7 @@ echo -e "${BLU}ezClaps${NC} - ${GRN}NodeJS & NPM installed!${NC}"
 
 #Run all build scripts
 echo -e "${BLU}ezClaps${NC} - ${AMB}Running build scripts...${NC}"
-find modules/build -iname 'install.sh' -exec bash "{}" \;
+find modules/builds -iname "install.sh" -exec bash "{}" \;
 echo -e "${BLU}ezClaps${NC} - ${GRN}All build scripts run!${NC}"
 
 #Final message
