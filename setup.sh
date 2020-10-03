@@ -27,19 +27,40 @@ echo -e "${BLU}ezClaps${NC} - ${AMB}Updating timezone...${NC}"
 sudo timedatectl set-timezone UTC
 echo -e "${BLU}ezClaps${NC} - ${GRN}Timezone updated to UTC!${NC}"
 
+#Change mirror from US to country code
+echo -e "${BLU}ezClaps${NC} - ${AMB}Changing APT mirror country...${NC}"
+sudo apt update
+sudo apt install curl -y
+CN=$(curl ipinfo.io/country | tr '[:upper:]' '[:lower:]')
+sudo sed -i 's/us.archive/au.archive/g' /etc/apt/sources.list
+echo -e "${BLU}ezClaps${NC} - ${GRN}APT country mirror changed!${NC}"
+
 #Install Python3 & PIP3
 echo -e "${BLU}ezClaps${NC} - ${AMB}Installing Python3 & PIP3...${NC}"
-sudo apt update
 sudo apt install python3 python3-pip -y
 echo -e "${BLU}ezClaps${NC} - ${GRN}Python3 & PIP3 installed!${NC}"
 
 #Install apt-select and then set mirror
-echo -e "${BLU}ezClaps${NC} - ${AMB}Updating APT mirror...${NC}"
+echo -e "${BLU}ezClaps${NC} - ${AMB}Updating to fastest APT mirror...${NC}"
+CN=$(curl ipinfo.io/country)
 sudo -H pip3 install apt-select
-apt-select -C AU
+apt-select -C $CN
 sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup
 sudo mv sources.list /etc/apt/
-echo -e "${BLU}ezClaps${NC} - ${GRN}APT mirror updated!${NC}"
+echo -e "${BLU}ezClaps${NC} - ${GRN}Fastest APT mirror updated!${NC}"
+
+#Install Python2 & PIP2
+echo -e "${BLU}ezClaps${NC} - ${AMB}Installing Python2 & PIP2...${NC}"
+sudo apt install python python-dev -y
+curl https://bootstrap.pypa.io/get-pip.py --output /tmp/get-pip.py
+sudo python2 /tmp/get-pip.py
+echo -e "${BLU}ezClaps${NC} - ${GRN}Python2 & PIP2 installed!${NC}"
+
+#Install NodeJS & NPM
+echo -e "${BLU}ezClaps${NC} - ${AMB}Installing NodeJS & NPM...${NC}"
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt install -y nodejs
+echo -e "${BLU}ezClaps${NC} - ${GRN}NodeJS & NPM installed!${NC}"
 
 #Update to pacakge list for new mirror and upgrade system
 echo -e "${BLU}ezClaps${NC} - ${AMB}Upgrading system...${NC}"
@@ -57,19 +78,6 @@ while read LINE; do
 done < modules/packages/apt.txt
 sudo DEBIAN_FRONTEND=noninteractive apt -y install $PKGS
 echo -e "${BLU}ezClaps${NC} - ${GRN}APT packages installed!${NC}"
-
-#Install Python2 & PIP2
-echo -e "${BLU}ezClaps${NC} - ${AMB}Installing Python2 & PIP2...${NC}"
-sudo apt install python python-dev -y
-curl https://bootstrap.pypa.io/get-pip.py --output /tmp/get-pip.py
-sudo python2 /tmp/get-pip.py
-echo -e "${BLU}ezClaps${NC} - ${GRN}Python2 & PIP2 installed!${NC}"
-
-#Install NodeJS & NPM
-echo -e "${BLU}ezClaps${NC} - ${AMB}Installing NodeJS & NPM...${NC}"
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-sudo apt install -y nodejs
-echo -e "${BLU}ezClaps${NC} - ${GRN}NodeJS & NPM installed!${NC}"
 
 #Run all build scripts
 echo -e "${BLU}ezClaps${NC} - ${AMB}Running build scripts...${NC}"
