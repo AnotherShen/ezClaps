@@ -37,6 +37,7 @@ echo -e "${BLU}ezClaps${NC} - ${GRN}APT country mirror changed!${NC}"
 
 #Install Python3 & PIP3
 echo -e "${BLU}ezClaps${NC} - ${AMB}Installing Python3 & PIP3...${NC}"
+sudo apt update
 sudo apt install python3 python3-pip -y
 echo -e "${BLU}ezClaps${NC} - ${GRN}Python3 & PIP3 installed!${NC}"
 
