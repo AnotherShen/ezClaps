@@ -19,6 +19,7 @@ if [[ $CMD == *"not found"* ]]
             curl https://bootstrap.pypa.io/get-pip.py --output /tmp/get-pip.py
             sudo python2 /tmp/get-pip.py
     else
+            sudo apt update
             sudo apt install python python-dev python-pip -y
     fi
 fi

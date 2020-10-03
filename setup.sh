@@ -33,11 +33,11 @@ sudo apt update
 sudo apt install curl -y
 CN=$(curl ipinfo.io/country | tr '[:upper:]' '[:lower:]')
 sudo sed -i "s/us.archive/$CN.archive/g" /etc/apt/sources.list
+sudo apt update
 echo -e "${BLU}ezClaps${NC} - ${GRN}APT country mirror changed!${NC}"
 
 #Install Python3 & PIP3
 echo -e "${BLU}ezClaps${NC} - ${AMB}Installing Python3 & PIP3...${NC}"
-sudo apt update
 sudo apt install python3 python3-pip -y
 echo -e "${BLU}ezClaps${NC} - ${GRN}Python3 & PIP3 installed!${NC}"
 
@@ -48,6 +48,7 @@ sudo -H pip3 install apt-select
 apt-select -C $CN
 sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup
 sudo mv sources.list /etc/apt/
+sudo apt update
 echo -e "${BLU}ezClaps${NC} - ${GRN}Fastest APT mirror updated!${NC}"
 
 #Install Python2 & PIP2
