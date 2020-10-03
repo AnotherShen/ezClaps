@@ -53,7 +53,9 @@ echo -e "${BLU}ezClaps${NC} - ${GRN}Fastest APT mirror updated!${NC}"
 #Install Python2 & PIP2
 echo -e "${BLU}ezClaps${NC} - ${AMB}Installing Python2 & PIP2...${NC}"
 if [[ $VER == "20.04" ]]; then
-        sudo apt install python2 python-dev -y
+        sudo add-apt-repository universe
+        sudo apt update
+        sudo apt install python2 -y
         curl https://bootstrap.pypa.io/get-pip.py --output /tmp/get-pip.py
         sudo python2 /tmp/get-pip.py
 else

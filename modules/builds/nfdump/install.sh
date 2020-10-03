@@ -8,8 +8,11 @@ NC="\033[0m"
 #Script starts
 echo -e "${BLU}ezClaps${NC} - ${AMB}Starting nfdump build module...${NC}"
 
-#Install NFDump with nfpcapd and rebuild shared library cache
+#Install prerequisites
+sudo apt update
 sudo apt install pkg-config libtool m4 automake flex bison libpcap-dev libbz2-dev -y
+
+#Install NFDump with nfpcapd and rebuild shared library cache
 cd /tmp
 git clone https://github.com/phaag/nfdump.git
 cd nfdump
