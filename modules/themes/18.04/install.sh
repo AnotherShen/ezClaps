@@ -2,7 +2,7 @@
 XDG=$(echo $XDG_CURRENT_DESKTOP)
 if [[ $XDG == *"GNOME"* ]]; then
         #Background and lockscreen
-        sudo mv ../common/ezclaps.jpg /usr/share/backgrounds/ezclaps.jpg
+        sudo mv modules/themes/common/ezclaps.jpg /usr/share/backgrounds/ezclaps.jpg
         gsettings set org.gnome.desktop.background picture-uri 'file:////usr/share/backgrounds/ezclaps.jpg'
         gsettings set org.gnome.desktop.screensaver picture-uri 'file:////usr/share/backgrounds/ezclaps.jpg'
 
