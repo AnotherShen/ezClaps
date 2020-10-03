@@ -32,7 +32,7 @@ echo -e "${BLU}ezClaps${NC} - ${AMB}Changing APT mirror country...${NC}"
 sudo apt update
 sudo apt install curl -y
 CN=$(curl ipinfo.io/country | tr '[:upper:]' '[:lower:]')
-sudo sed -i 's/us.archive/au.archive/g' /etc/apt/sources.list
+sudo sed -i "s/us.archive/$CN.archive/g" /etc/apt/sources.list
 echo -e "${BLU}ezClaps${NC} - ${GRN}APT country mirror changed!${NC}"
 
 #Install Python3 & PIP3
@@ -52,9 +52,13 @@ echo -e "${BLU}ezClaps${NC} - ${GRN}Fastest APT mirror updated!${NC}"
 
 #Install Python2 & PIP2
 echo -e "${BLU}ezClaps${NC} - ${AMB}Installing Python2 & PIP2...${NC}"
-sudo apt install python python-dev -y
-curl https://bootstrap.pypa.io/get-pip.py --output /tmp/get-pip.py
-sudo python2 /tmp/get-pip.py
+if [[ $VER == "20.04" ]]; then
+        sudo apt install python2 python-dev -y
+        curl https://bootstrap.pypa.io/get-pip.py --output /tmp/get-pip.py
+        sudo python2 /tmp/get-pip.py
+else
+        sudo apt install python python-dev python-pip -y
+fi
 echo -e "${BLU}ezClaps${NC} - ${GRN}Python2 & PIP2 installed!${NC}"
 
 #Install NodeJS & NPM
