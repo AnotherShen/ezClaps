@@ -1,3 +1,13 @@
+#Colour variables for update messages
+GRN="\033[1;32m"
+AMB="\033[0;33m"
+RED="\033[0;31m"
+BLU="\033[0;36m"
+NC="\033[0m"
+
+#Script starts
+echo -e "${BLU}ezClaps${NC} - ${AMB}Starting autopsy build module...${NC}"
+
 #Autopsy - Install Photorec Support
 sudo apt-get -y install testdisk
 
@@ -49,3 +59,6 @@ cd autopsy-4.16.0
 sh unix_setup.sh
 echo 'alias autopsy="./bin/autopsy &"' >> ~/.bashrc
 source ~/.bashrc
+
+#Script ends
+echo -e "${BLU}ezClaps${NC} - ${GRN}Finished autopsy build module!${NC}"
