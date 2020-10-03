@@ -6,11 +6,11 @@ if [[ $EUID = 0 ]]; then
 fi
 
 #Colour variables for update messages
-GRN='\033[1;32m'
-AMB='\033[0;33m'
-RED='\033[0;31m'
-BLU='\033[0;36m'
-NC='\033[0m'
+GRN="\033[1;32m"
+AMB="\033[0;33m"
+RED="\033[0;31m"
+BLU="\033[0;36m"
+NC="\033[0m"
 
 #Run the theme if applicable
 echo -e "${BLU}ezClaps${NC} - ${AMB}Updating theme...${NC}"
@@ -49,11 +49,13 @@ echo -e "${BLU}ezClaps${NC} - ${GRN}System upgraded!${NC}"
 
 #Install APT packages
 echo -e "${BLU}ezClaps${NC} - ${AMB}Installing APT packages...${NC}"
-while read line; do
-        if [[ ${line:0:1} != \# && $line != "" ]]; then
-                sudo DEBIAN_FRONTEND=noninteractive apt -y install $line
+PKGS=""
+while read LINE; do
+        if [[ ${LINE:0:1} != \# && $LINE != "" ]]; then
+                PKGS="${PKGS} ${LINE}"
         fi
-done < apt_packages.txt
+done < modules/packages/apt.txt
+sudo DEBIAN_FRONTEND=noninteractive apt -y install $PKGS
 echo -e "${BLU}ezClaps${NC} - ${GRN}APT packages installed!${NC}"
 
 #Install Python2 & PIP2
