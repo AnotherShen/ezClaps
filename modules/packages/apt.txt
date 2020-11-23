@@ -8,6 +8,7 @@ flex
 bison
 libpcap-dev
 libbz2-dev
+snap
 
 #Utilities
 vim
@@ -18,6 +19,7 @@ p7zip-full
 dwarfdump
 yara
 zip
+zsh
 
 #Host Forensics
 libvshadow-utils
